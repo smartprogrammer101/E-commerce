@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.1.1-web/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.1.1-web/css/brands.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.1.1-web/css/solid.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.1.1-web/css/v4-shims.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="top-bar flex align-center">
+        <a href="#" class="logo">ezone</a>
+        
+        <form class="search-form flex-no-gap">
+            <button type="button" class="search-dropdown flex centered">
+                <span>All</span>
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <input type="text" class="search-input">
+            <button type="submit" class="search-submit-button flex centered">
+                <i class="fa fa-search" style="font-size: 20px;"></i>
+            </button>
+        </form>
+
+        <div class="link-group flex centered">
+            <a href="#">Account</a>
+            <a id= "cart" class="icon flex centered" style="--gap: .2em;" href="#">
+                <i class="fa fa-shopping-cart fa-opencart" style="font-size: 20px;"></i>
+                Cart
+            </a>
+        </div>
+
+    </div>
+    <div class="categories-filter-container" data-visible="false">
+        <ul class="categories-filter-list">
+            <li>Phone</li>
+            <li>Clothing</li>
+            <li>Computers</li>
+            <li>Food</li>
+            <li>Electronics and Gaming</li>
+            <li>Food</li>
+            <li>Electronics</li>
+            <li>Food</li>
+            <li>Electronics</li>
+            <li>Food</li>
+            <li>Electronics</li>
+            <li>Food</li>
+            <li>Electronics</li>
+        </ul>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <script src="{% static 'js/nav.js' %}"></script>
+    {% block javascript %}{% endblock javascript %}
+</body>
+</html>

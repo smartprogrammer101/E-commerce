@@ -1,0 +1,234 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="nav-toggle-bar">
+        <button role="button" class="toggle-nav-button flex centered" data-nav-visible="false">
+            <i class="fa fa-bars" style="color: white;"></i>
+        </button>
+    </div>
+    <header>
+        <nav class="primary-navigation" data-visible="false">
+            <ul>
+                <li><a href="#"><i class="fa fa-female"></i>Health & Beauty</a></li>
+                <li><a href="#"><i class="fa fa-laptop"></i>Computing</a></li>
+                <li><a href="#"><i class="fa fa-mobile-phone"></i>Phones & Tablets</a></li>
+                <li><a href="#"><i class="fa fa-tv"></i>Electronics</a></li>
+                <li><a href="#"><i class="fa fa-shirt"></i>Fashion</a></li>
+                <li><a href="#"><i class="fa fa-gamepad"></i>Gaming</a></li>
+                <li><a href="#"><i class="fa fa-home"></i>Home & Office</a></li>
+                <li><a href="#"><i class="fa fa-soccer-ball"></i>Sporting Goods</a></li>
+            </ul>
+        </nav>
+        <div class="featured-box">
+            <img src="./L1.jpg" alt="">
+        </div>
+        <div class="box box-one flex flex-column centered">
+            <p>Sign in to start buying</p>
+            <a href="#" class="button sign-in-button">
+                Sign In
+            </a>
+        </div>
+        <div class="box box-two"></div>
+    </header>
+
+    <main>
+        <div class="items-wrapper">
+            <div class="group group-header flex space-between align-center">
+                <h3>Top Deals</h3>
+                <a href="#">SEE ALL <i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="items-card-container">
+                <a href="#" class="item-card discounted">
+                    <p class="dicount-percentage">-20%</p>
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src={{ product.image_set.first.image.url }} alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price original-price">$19.99</p>
+                            <p class="price discounted-price">$15.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/w2.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/s1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/sh2.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="group group-footer flex justify-end">
+                <a href="#" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        <div class="items-wrapper">
+            <div class="group group-header flex space-between align-center">
+                <h3>Laptops</h3>
+                <a href="#">SEE ALL <i class="fa fa-angle-right"></i></a>
+            </div>
+            <div class="items-card-container">
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/L1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/w2.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/s1.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="item-card">
+                    <div class="image" style="height: 200px; background-color: grey;">
+                        <img src="/sh2.jpg" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="product-name">Rove R2-4K Dash Cam Rove R2-4K Dash Cam...</h3>
+                        <div class="rating">
+                            <div class="rating flex align-center">
+                                <div class="star">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                                <span class="num-reviews">2,437</span>
+                            </div>
+                            <p class="price">$19.99</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="group group-footer flex justify-end">
+                <a href="#" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/nav-toggle.js' %}"></script>
+{% endblock javascript %}
