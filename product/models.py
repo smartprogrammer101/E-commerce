@@ -29,6 +29,8 @@ class Product(models.Model):
         return self.name
     
     
+class FeaturedProduct(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE)
 
 
 class Manufacturer(models.Model):

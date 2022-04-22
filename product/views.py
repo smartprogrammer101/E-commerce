@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from .models import Product, Category
+from .models import Product, Category, FeaturedProduct
 
 # Create your views here.
 
@@ -11,6 +11,11 @@ class HomePageView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["category"] = Category.objects.all()[:4]
+        context["categories"] = Category.objects.all()[:4]
+        context["featured_products"] = FeaturedProduct.objects.all()[:4]
         return context
+
+    def get_queryset(self):
+        return Product.objects.all()[:4]
+    
     
