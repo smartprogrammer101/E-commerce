@@ -1,10 +1,13 @@
 from django.contrib import admin
-from .models import Product, Category, Color, Image, Manufacturer, Tag, FeaturedProduct
+from .models import Product, Category, Color, Image, Manufacturer, Tag, FeaturedProduct, Review
 
 # Register your models here.
 
 class ImageInline(admin.StackedInline):
     model = Image
+    can_delete = False
+class ReviewInline(admin.StackedInline):
+    model = Review
     can_delete = False
 
 class ProductInline(admin.StackedInline):
@@ -12,6 +15,7 @@ class ProductInline(admin.StackedInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [
+        ReviewInline,
         ImageInline,
     ]
 
@@ -26,4 +30,5 @@ admin.site.register(Tag)
 admin.site.register(Color)
 admin.site.register(Image)
 admin.site.register(FeaturedProduct)
+admin.site.register(Review)
 admin.site.register(Manufacturer, ManufacturerAdmin)

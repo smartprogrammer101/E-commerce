@@ -21,8 +21,8 @@
             </ul>
         </nav>
         <div class="featured-box">
-            <button type="button" class="carousel-button" id="next-button"><i class="fa fa-angle-right"></i></button>
-            <button type="button" class="carousel-button" id="prev-button"><i class="fa fa-angle-left"></i></button>
+            <button type="button" class="carousel-button" id="next-button"><i class="fa fa-angle-right flex centered"></i></button>
+            <button type="button" class="carousel-button" id="prev-button"><i class="fa fa-angle-left flex centered"></i></button>
             {% for product in featured_products %}
             <div class="featured-image-container" id="featured-image-first">
                 <img src="{{ product.product.image_set.first.image.url }}" class="featured-image" alt="">
@@ -52,7 +52,7 @@
             </div>
             <div class="items-card-container">
             {% for product in products %}
-                <a href="#" class="item-card discounted">
+                <a href="{{ product.get_absolute_url }}" class="item-card discounted">
                     <p class="dicount-percentage">-20%</p>
                     <div class="image" style="height: 200px; background-color: grey;">
                         <img src={{ product.image_set.first.image.url }} alt="">
@@ -68,7 +68,14 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                 </div>
-                                <span class="num-reviews">2,437</span>
+                                <span class="average-rating">{{ product.rating }}</span>
+                                <span class="num-reviews">
+                                {% if product.num_reviews == 0 %}
+                                no reviews yet
+                                {% else %}
+                                    {{ product.num_reviews }}
+                                {% endif %}
+                                </span>
                             </div>
                             <p class="price original-price">$<span>{{ product.price }}</span></p>
                             <p class="price discounted-price">$15.99</p>
@@ -91,7 +98,7 @@
             </div>
             <div class="items-card-container">
             {% for product in category.product_set.all|slice:":4" %}
-                <a href="#" class="item-card">
+                <a href="{{ product.get_absolute_url }}" class="item-card">
                     <div class="image" style="height: 200px; background-color: grey;">
                         <img src="{{ product.image_set.first.image.url }}" alt="">
                     </div>
@@ -106,7 +113,14 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                                 </div>
-                                <span class="num-reviews">2,437</span>
+                                <span class="average-rating">{{ product.rating }}</span>
+                                <span class="num-reviews">
+                                {% if product.num_reviews == 0 %}
+                                no reviews yet
+                                {% else %}
+                                    {{ product.num_reviews }}
+                                {% endif %}
+                                </span>
                             </div>
                             <p class="price">$<span>{{ product.price }}</span></p>
                         </div>
@@ -127,4 +141,6 @@
 {% block javascript %}
     <script src="{% static 'js/nav-toggle.js' %}"></script>
     <script src="{% static 'js/carousel.js' %}"></script>
+    
+    <script src="{% static 'js/reviews.js' %}"></script>
 {% endblock javascript %}

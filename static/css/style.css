@@ -270,9 +270,15 @@ header {
     top: 0;
     bottom: 0;
     z-index: 1;
-    padding: 1.5em;
+    /* padding: 1.5em 1em 1.5em 0; */
     /* background-color: red; */
     cursor: pointer;
+}
+.carousel-button i {
+    width: 70px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,.2);
+    aspect-ratio: 1;
 }
 
 #prev-button {
@@ -468,6 +474,10 @@ main {
     letter-spacing: 0;
     color: var(--color-star);
 }
+.item-card .fa-star-o {
+    letter-spacing: 0;
+    color: #ddd;
+}
 .item-card .price {
     color: var(--color-primary);
     margin-top: .3em;
@@ -476,6 +486,10 @@ main {
     font-size: .85em;
     opacity: .5;
     text-decoration: line-through;
+}
+.item-card .average-rating {
+    font-size: .75em;
+    display: none;
 }
 .item-card .num-reviews {
     font-size: .75em;
