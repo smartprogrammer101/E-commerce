@@ -22,9 +22,10 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     model = CustomUser
     list_display = ['username', 'email']
-    inlines = (UserCartInline, UserWishListInline)
+    inlines = (UserCartInline, UserWishListInline,)
 
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser, # CustomUserAdmin
+)
 admin.site.register(Cart)
 admin.site.register(Wishlist)
 

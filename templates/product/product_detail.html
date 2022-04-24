@@ -1,0 +1,55 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}{{ product.name }}{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/detail.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+<section class="one">
+    <div class="product-image">
+        <img src="{{ product.image_set.first.image.url }}" class="product-" alt="">
+    </div>
+    <div class="info flex flex-column">
+        <h1 class="product-name">
+            {{ product.name }}
+        </h1>
+        <div class="rating flex">
+            <div class="star">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <div class="rating-number">{{ product.rating }} ratings</div>
+        </div>
+        <div>
+            <div class="original-price">List Price: <span class="orignal-price-amout">$49.99</span></div>
+            <div class="item-price">Price: <span class="item-price-amount">$39.99</span></div>
+            <div class="saved-price">You Save: <span class="saved-price-amount">$10.00 (56%)</span></div>
+            <div class="item-color">Color: <span class="item-color-value">{{ product.color.first|capfirst }}</span></div>
+        </div>
+    </div>
+    <div class="cart_wishlist flex flex-column">
+        <div class="item-price-amount">$39.99</div>
+        <div class="in-stock">In Stock</div>
+        <input class="quantity" type="text" list="qty" value="1">
+        <datalist id="qty">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </datalist>
+        <a href="#" class="button cart-button">Add to Cart</a>
+        <a href="#" class="button wishlist-button">Add to Wishlist</a>
+        <a href="#" class="button buy-now-button">Buy Now</a>
+    </div>
+</section>
+{% endblock content %}
+
+{% comment %} {% block javascript %}
+    <script src="js/nav.js"></script>
+{% endblock javascript %} {% endcomment %}
