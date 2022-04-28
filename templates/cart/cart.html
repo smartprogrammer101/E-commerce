@@ -1,0 +1,78 @@
+{% extends '_base.html' %}
+{% load static humanize%}
+{% block title %}Cart{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+
+    <main>
+        <div class="main-container">
+            <div class="all-cart-items-container">
+                <h1 class="shopping-cart-heading">Shopping Cart</h1>
+                <div class="shopping-cart-price">Price</div>
+            {% for item in cart %}
+                <div class="wrapper flex space-between">
+                    <div class="content">
+                        <div class="shopping-cart-item-image-container">
+                            <img src="{{ item.product.image_set.first.image.url }}" alt="" class="shopping-cart-item-image">
+                        </div>
+                        <div class="shopping-cart-item-detail flex flex-column">
+                            <h2><a href="{{ item.product.get_absolute_url }}">{{ item.product.name }}</a></h2>
+                        {% if item.product.in_stock %}
+                            <p class="in-stock">In stock</p>
+                            {% else %}
+                            <p class="out-of-stock">Out of stock</p>
+                        {% endif %}
+                            <div class="actions flex">
+                                <form action="{% url 'cart:cart' %}" method="post">{% csrf_token %}
+                                    <select onchange="this.form.submit()" name="quantity" id="item-quantity">
+                                        <option selected value="{{ item.quantity }}">Qty {{ item.quantity }}</option>
+                                        <option value="1">Qty 1</option>
+                                        <option value="2">Qty 2</option>
+                                        <option value="3">Qty 3</option>
+                                        <option value="4">Qty 4</option>
+                                        <option value="5">Qty 5</option>
+                                        <option value="6">Qty 6</option>
+                                    </select>
+                                    <input type="hidden" name="product-id" value="{{ item.product.id }}">
+                                </form>
+                                <form action="{% url 'cart:cart' %}" method="POST">{% csrf_token %}
+                                    <input type="hidden" name="type" value="DELETE">
+                                    <input type="hidden" name="product-id" value="{{ item.product.id }}">
+                                    <button class="delete-item" type="submit">Delete</button>
+                                </form>
+                            </div>
+                            <div class="color">Color:
+                                <span class="item-color">White</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-price">${{ item.total|intcomma }}</div>
+                </div>
+            {% endfor %}
+                <div class="total-price">
+                    <span>Subtotal ({{ total }} items): ${{ subtotal|intcomma }}</span>
+                </div>
+            </div>
+            <div class="proceed-checkout flex flex-column">
+                <div class="total-price">
+                    <span>Subtotal ({{ total }} items): ${{ subtotal|intcomma }}</span>
+                </div>
+                <a href="#" class="checkout-button button">Proceed&nbsp;to&nbsp;checkout</a>
+            </div>
+        </div>
+    </main>
+
+
+
+{% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/nav-toggle.js' %}"></script>
+    <script src="{% static 'js/carousel.js' %}"></script>
+    
+    <script src="{% static 'js/reviews.js' %}"></script>
+{% endblock javascript %}

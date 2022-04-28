@@ -3,3 +3,5 @@
 **/fontawesome-free-6.1.1-web/
 !fontawesome-free-6.1.1-web/css
 */migrations/*
+.coverage
+htmlcov

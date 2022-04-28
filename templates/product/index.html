@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-{% load static %}
+{% load static humanize %}
 
 {% block content %}
     <div class="nav-toggle-bar">
@@ -77,8 +77,8 @@
                                 {% endif %}
                                 </span>
                             </div>
-                            <p class="price original-price">$<span>{{ product.price }}</span></p>
-                            <p class="price discounted-price">$15.99</p>
+                            <p class="price original-price">$<span>{{ product.price|intcomma }}</span></p>
+                            <p class="price discounted-price">{{ product.price|intcomma }}</p>
                         </div>
                     </div>
                 </a>
@@ -122,7 +122,7 @@
                                 {% endif %}
                                 </span>
                             </div>
-                            <p class="price">$<span>{{ product.price }}</span></p>
+                            <p class="price">$<span>{{ product.price|intcomma }}</span></p>
                         </div>
                     </div>
                 </a>

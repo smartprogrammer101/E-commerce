@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="top-bar flex align-center">
-        <a href="#" class="logo">ezone</a>
+        <a href="/" class="logo">ezone</a>
         
         <form class="search-form flex-no-gap">
             <button type="button" class="search-dropdown flex centered">
@@ -31,10 +31,11 @@
 
         <div class="link-group flex centered">
             <a href="#">Account</a>
-            <a id= "cart" class="icon flex centered" style="--gap: .2em;" href="#">
+            <a id= "cart" class="icon flex centered" style="--gap: .2em;" href="{% url 'cart:cart' %}">
                 <i class="fa fa-shopping-cart fa-opencart" style="font-size: 20px;"></i>
                 Cart
             </a>
+            <span class="number-of-item-in-cart">{{ total }}</span>
         </div>
 
     </div>
