@@ -5,3 +5,4 @@
 */migrations/*
 .coverage
 htmlcov
+**/style-old.css

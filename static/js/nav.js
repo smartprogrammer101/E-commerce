@@ -3,6 +3,7 @@
 const dropdownButton = document.querySelector(".search-dropdown");
 const searchInput = document.querySelector(".search-input");
 const filterListContainer = document.querySelector(".categories-filter-container");
+const categoriesButton = document.getElementById('category');
 
 let left = dropdownButton.offsetLeft;
 function positionDropdownMenu(){
@@ -46,6 +47,8 @@ class FormHandling {
     updateDropdownText(e) {
         this.listText = e.target.textContent;
         dropdownButton.querySelector("span").textContent = this.listText;
+        categoriesButton.setAttribute('value', this.listText);
+        // console.log(categoriesButton.value);
         filterListContainer.dataset.visible = "false";
         searchInput.focus();
     }

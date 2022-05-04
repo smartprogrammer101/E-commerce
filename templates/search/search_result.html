@@ -1,0 +1,47 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="search-result">
+{% if searched_category %}
+    {% if searched_text %}
+        <p>{{ searched_products_result|length }} results for <span class="searched-text">"{{ searched_text }}"</span> in <span class="searched-text">"{{ searched_category }}"</span></p>
+    {% else %}
+        <p>{{ searched_products_result|length }} results for <span class="searched-text">"{{ searched_category }}"</span></p>
+    {% endif %}
+{% else %}
+    <p>{{ searched_products_result|length }}results for <span class="searched-text">"{{ searched_text }}"</span></p>
+{% endif %}
+</div>
+<main>
+    <h1 class="results">Results</h1>
+    {% for product in searched_products_result %}
+    <a href="{{ product.get_absolute_url }}" class="result-items">
+        <div class="image">
+            <img src="{{ product.image_set.first.image.url }}" alt="">
+        </div>
+        <div class="details">
+            <h2 class="item-name">{{ product.name }}</h2>
+            <div class="rating flex align-center">
+                <div class="star">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                <span class="num-reviews">3.5</span>
+            </div>
+            <span class="price">$1,234.00</span>
+            <div class="item-left">Only 2 items left in stock</div>
+        </div>
+    </a>
+    {% endfor %}
+</main>
+
+
+{% endblock content %}

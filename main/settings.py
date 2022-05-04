@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'cart.apps.CartConfig',
+    'search.apps.SearchConfig',
 
     'django.contrib.humanize'
 ]
@@ -68,7 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.context_processors.cart'
+                'cart.context_processors.cart',
+                'search.context_processors.categories',
             ],
         },
     },
