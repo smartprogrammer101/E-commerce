@@ -96,7 +96,8 @@ button, input {
 
 body {
     font-family: var(--ff-one);
-    background-color: rgb(221, 230, 238);
+    /* background-color: rgb(221, 230, 238); */
+    background-color: #fff;
     /* padding: 0 2em; */
 }
 
@@ -178,15 +179,18 @@ body {
 ------------------------------
 ----------------------------*/
 header {
+    /* background-color: #eee; */
     position: relative;
     padding: 1em;
     max-width: 1100px;
     margin: 0 auto;
+    margin-top: 1em;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 200px 200px;
     grid-template-areas: 'featured featured featured featured featured'
                             'featured featured featured featured featured';
+    box-shadow: 0 0 5px;
 }
 .primary-navigation,
 .box-one,
@@ -388,6 +392,7 @@ main {
     max-width: 1100px;
     margin: 0 auto;
     margin-top: 2em;
+    box-shadow: 0 2px 5px;
 }
 .group {
     padding: .8em;
@@ -471,16 +476,19 @@ main {
     width: 100%;
     object-fit: cover;
     transition: transform 500ms;
+    background-color: #fff;
 }
 .item-card:hover img{
     transform: scale(1.2);
 }
 
-.item-card .star {
+.item-card .star,
+.rating .star {
     letter-spacing: 0;
     color: var(--color-star);
 }
-.item-card .fa-star-o {
+.item-card .fa-star-o,
+.rating .fa-star-o {
     letter-spacing: 0;
     color: #ddd;
 }
@@ -493,7 +501,8 @@ main {
     opacity: .5;
     text-decoration: line-through;
 }
-.item-card .average-rating {
+.item-card .average-rating,
+.rating .average-rating {
     font-size: .75em;
     display: none;
 }

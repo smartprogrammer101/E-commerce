@@ -23,28 +23,30 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <div class="rating-number">{{ product.rating }} ratings</div>
+            <div class="rating-number"><span class="average-rating">{{ product.rating }}</span>{{ product.num_reviews }} ratings</div>
         </div>
         <div>
-            <div class="original-price">List Price: <span class="orignal-price-amout">$49.99</span></div>
-            <div class="item-price">Price: <span class="item-price-amount">${{ product.price|intcomma }}</span></div>
-            <div class="saved-price">You Save: <span class="saved-price-amount">$10.00 (56%)</span></div>
+            <div class="original-price">List Price: <span class="orignal-price-amout">&#8358;49.99</span></div>
+            <div class="item-price">Price: <span class="item-price-amount">&#8358;{{ product.price|intcomma }}</span></div>
+            <div class="saved-price">You Save: <span class="saved-price-amount">&#8358;10.00 (56%)</span></div>
             <div class="item-color">Color: <span class="item-color-value">{{ product.color.first|capfirst }}</span></div>
         </div>
     </div>
     <div class="cart_wishlist flex flex-column">
-        <div class="item-price-amount">${{ product.price|intcomma }}</div>
+        <div class="item-price-amount">&#8358;{{ product.price|intcomma }}</div>
         <div class="in-stock">In Stock</div>
         <form action="{% url 'cart:cart' %}" method="post">{% csrf_token %}
-        <input class="quantity" name="quantity" type="text" list="qty" value="1">
-        <datalist id="qty">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </datalist>
-        {% comment %} <!-- <a href="{% url 'cart:add_to_cart' %}" class="button cart-button">Add to Cart</a> --> {% endcomment %}
+            <div class="quantity-wrapper">
+                <select name="quantity" class="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option id="more-botton" value="more">more?</option>
+                </select>
+            </div>
+
             <input type="hidden" name="product-id" value="{{ product.id }}">
             <button href="#" class="button cart-button">Add to Cart</button>       
         </form>
@@ -54,6 +56,8 @@
 </section>
 {% endblock content %}
 
-{% comment %} {% block javascript %}
-    <script src="js/nav.js"></script>
-{% endblock javascript %} {% endcomment %}
+{% block javascript %}
+    {% comment %} <script src="js/nav.js"></script> {% endcomment %}
+    <script src="{% static 'js/product_detail.js' %}"></script>
+    <script src="{% static 'js/reviews.js' %}"></script>
+{% endblock javascript %}

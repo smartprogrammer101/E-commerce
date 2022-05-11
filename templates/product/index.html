@@ -45,6 +45,7 @@
     </header>
 
     <main>
+        <!-- TOP DEALS -->
         <div class="items-wrapper">
             <div class="group group-header flex space-between align-center">
                 <h3>Top Deals</h3>
@@ -77,8 +78,8 @@
                                 {% endif %}
                                 </span>
                             </div>
-                            <p class="price original-price">$<span>{{ product.price|intcomma }}</span></p>
-                            <p class="price discounted-price">{{ product.price|intcomma }}</p>
+                            <p class="price original-price">&#8358;<span>{{ product.price|intcomma }}</span></p>
+                            <p class="price discounted-price">&#8358;{{ product.price|intcomma }}</p>
                         </div>
                     </div>
                 </a>
@@ -94,7 +95,7 @@
         <div class="items-wrapper">
             <div class="group group-header flex space-between align-center">
                 <h3>{{ category.name|capfirst }}</h3>
-                <a href="#">SEE ALL <i class="fa fa-angle-right"></i></a>
+                <a href="{% url 'search' %}?q={{category.name}}">SEE ALL <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="items-card-container">
             {% for product in category.product_set.all|slice:":4" %}
@@ -104,7 +105,7 @@
                     </div>
                     <div class="info">
                         <h3 class="product-name">{{ product.name }}</h3>
-                        <div class="rating">
+                        {% comment %} <div class="rating"> {% endcomment %}
                             <div class="rating flex align-center">
                                 <div class="star">
                                     <i class="fa fa-star"></i>
@@ -122,14 +123,14 @@
                                 {% endif %}
                                 </span>
                             </div>
-                            <p class="price">$<span>{{ product.price|intcomma }}</span></p>
-                        </div>
+                            <p class="price">&#8358;<span>{{ product.price|intcomma }}</span></p>
+                        {% comment %} </div> {% endcomment %}
                     </div>
                 </a>
             {% endfor %}
             </div>
             <div class="group group-footer flex justify-end">
-                <a href="#" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
+                <a href="{% url 'search' %}?q={{category.name}}" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
     {% endif %}
