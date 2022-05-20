@@ -1,0 +1,50 @@
+
+a.inline {
+    display: inline;
+    /* text-decoration: none; */
+}
+.error-message {
+    padding: .3em;
+    border: solid  rgb(255, 136, 0);
+    color: rgb(255, 136, 0);
+}
+.create-account-button {
+    text-decoration: none;
+    background-color: #ddd;
+    background: linear-gradient(to bottom, #eee, #ddd);
+    text-align: center;
+    border: 1px solid #000;
+    color: #000;
+    border-radius: 3px;
+}
+.create-account-button:hover {
+    background-color: #fff;
+    background: linear-gradient(to bottom, #ccc, #eee);
+}
+
+.new-title {
+    position: relative;
+    font-size: 13px;
+    font-weight: 400;
+    color: #aaa;
+    /* border: solid; */
+    width: fit-content;
+    margin: 2em auto 1em auto;
+}
+.new-title::after,
+.new-title::before {
+    content: '';
+    height: 1px;
+    width: 135%;
+    background-color: #aaa;
+    position: absolute;
+    top: 7px;
+}
+.new-title::before {
+    right: 130%;
+    top: 7px;
+}
+.new-title::after {
+    left: 130%;
+    top: 7px;
+}

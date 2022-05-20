@@ -22,13 +22,19 @@ class Product(models.Model):
     in_stock = models.BooleanField(default=True)
     color = models.ManyToManyField('Color', default='unspecified')
     num_items = models.IntegerField()
-    price = models.DecimalField(max_digits=7, decimal_places=2)
-    discount = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    percentage = models.IntegerField(default=0, editable=False)
     date_created = models.DateField(auto_now_add=datetime.now)
     date_updated = models.DateField(auto_now=datetime.now)
 
     class Meta:
         ordering = ['date_created']
+
+    def save(self, *args, **kwargs):
+        if self.discount:
+            self.percentage = ((self.price - self.discount) / self.price * 100)
+        super(Product, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("product_detail", kwargs={"pk": self.pk})
@@ -94,6 +100,11 @@ class Review(models.Model): # new
         get_user_model(),
         on_delete=models.CASCADE,
     )
+
+    # def save(self, *args, **kwargs):
+    #     print('count: ', self.product.reviews.count())
+    #     self.num_reviews = self.product.reviews.count() + 1
+    #     super(Review, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.review

@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a.block {
+    display: block;
+    width: fit-content;
+    margin: .2em;
+}
+a:hover {
+    text-decoration: underline;
+}
+h3 {
+    margin: .7em 0 .2em 0;
+}
+h3,
+h4 {
+    font-weight: 400;
+}
+p,
+a,
+span {
+    font-size: 14px;
+}
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 400px;
+    padding: 1em;
+    margin: 0 auto;
+}
+h2.logo {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.error-div {
+    padding: 1em;
+    border: 1px solid goldenrod;
+    display: flex;
+    gap: 1em;
+    align-items: flex-start;
+    margin-bottom: 1em;
+    box-shadow: 1px 0 1px 1px goldenrod,
+     0 1px rgb(78, 59, 10),
+     -1px 0 goldenrod,
+     0 -1px rgb(78, 59, 10);
+}
+.error-sign {
+    font-size: 3em;
+    color: goldenrod;
+    position: relative;
+    top: -15px;
+}
+h1.error-message-header {
+    color: goldenrod;
+    font-size: 1em;
+}
+.email-address {
+    font-weight: 600;
+}

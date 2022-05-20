@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/signup.css' %}">
+</head>
+<body>
+    
+
+    {% comment %} <div class="container">
+        <h2 class="logo">ezone</h2>
+        <form method="POST" class="sign-in-form">
+            <h1>Create account</h1>
+            <div class="name input-wrapper">
+                <label for="name">Your name</label>
+                <input type="text" name="name" id="name" autofocus>
+            </div>
+            <div class="email input-wrapper">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div class="password input-wrapper">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="at least 6 characters">
+                <p class="password-note">password must be at least 6 characters</p>
+            </div>
+            <div class="password input-wrapper">
+                <label for="password2">Re-enter password</label>
+                <input type="password" name="password2" id="password2">
+            </div>
+            <input type="submit" value="Continue">
+            <p class="para">Already have an account? <a href="{% url 'login-email' %}">Sign in</a></p>
+        </form>
+
+    </div> {% endcomment %}
+    <div class="container">
+        <h2 class="logo">ezone</h2>
+        <form method="POST" class="sign-in-form" novalidate>{% csrf_token %}
+            <h1>Create account</h1>
+            
+            {% if messages %}{% autoescape off %}
+            {% for message in messages %}
+            <p class="error-message">{{ message }}</p>
+            {% endfor %}
+            {% endautoescape %}
+            {% endif %}
+
+            <div class="name input-wrapper">
+                {% if form.username.errors %}
+                <p class='signup-field-error'>{{ form.username.errors|striptags }}</p>
+                {% endif %}
+                
+                <label for="name">Your name</label>
+                {{ form.username }}
+            </div>
+            <div class="email input-wrapper">
+                {% if form.email.errors %}
+                <p class='signup-field-error'>{{ form.email.errors|striptags }}</p>
+                {% endif %}
+                
+                <label for="{{ form.email.id_for_label }}">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="password input-wrapper">
+                {% if form.password.errors %}
+                <p class='signup-field-error'>{{ form.password.errors|striptags }}</p>
+                {% endif %}
+                
+                <label for="password">Password</label>
+                {{ form.password }}
+                <p class="password-note">password must be at least 6 characters</p>
+            </div>
+            <div class="password input-wrapper">
+                {% if form.password.errors %}
+                <p class='signup-field-error'>{{ form.password2.errors|striptags }}</p>
+                {% endif %}
+                
+                <label for="password2">Re-enter password</label>
+                {{ form.password2 }}
+            </div>
+            <input type="submit" value="Continue">
+            <p class="para">Already have an account? <a href="{% url 'login-email' %}">Sign in</a></p>
+        </form>
+
+    </div>
+
+</body>
+</html>

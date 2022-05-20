@@ -21,10 +21,23 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     add_form = CustomUserCreationForm
     model = CustomUser
-    list_display = ['username', 'email']
+    list_display = [ 'email', 'username','is_active', 'is_superuser']
     inlines = (UserCartInline, UserWishListInline,)
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        ('Personal info', {'fields': ('phone',)}),
+        ('Permissions', {'fields': ('is_superuser',)}),
+    )
+    # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
+    # overrides get_fieldsets to use this attribute when creating a user.
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'phone', 'password', 'password2'),
+        }),
+    )
 
-admin.site.register(CustomUser, # CustomUserAdmin
+admin.site.register(CustomUser, CustomUserAdmin
 )
 admin.site.register(Cart)
 admin.site.register(Wishlist)

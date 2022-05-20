@@ -1,0 +1,27 @@
+input, label {
+    margin: 0 !important;
+}
+a {
+    color: blue;
+    display: inline;
+    font-weight: 500;
+    /* text-decoration: none; */
+}
+p {
+    font-size: .9em;
+    font-weight: 500;
+    color: rgb(66, 56, 56);
+}
+
+div.input-wrapper {
+    margin-bottom: 1em;
+}
+.para {
+    margin-top: .5em;
+}
+
+.signup-field-error {
+    background-color: rgb(158, 91, 91);
+    color: goldenrod;
+    padding: .2em 1em;
+}

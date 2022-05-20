@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/login-email.css' %}">
+</head>
+<body>
+    
+
+    <div class="container">
+        <h2 class="logo">ezone</h2>
+        <form method="POST" class="sign-in-form">{% csrf_token %}
+            <h1>Sign In</h1>
+
+            {% if messages %}{% autoescape off %}
+            {% for message in messages %}
+            <p class="error-message">{{ message }}</p>
+            {% endfor %}
+            {% endautoescape %}
+            {% endif %}
+            
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" autofocus>
+            <input type="submit" value="Continue">
+        </form>
+        <h2 class="new-title">New to Ezone?</h2>
+        <a href="{% url 'signup' %}" class="create-account-button">Create your Ezone account</a>
+    </div>
+
+</body>
+</html>

@@ -37,9 +37,15 @@
         </div>
         <div class="box box-one flex flex-column centered">
             <p>Sign in to start buying</p>
-            <a href="#" class="button sign-in-button">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="button sign-in-button">
+                Sign Out
+            </a>
+            {% else %}
+            <a href="{% url 'login-email' %}" class="button sign-in-button">
                 Sign In
             </a>
+            {% endif %}
         </div>
         <div class="box box-two"></div>
     </header>
@@ -52,9 +58,9 @@
                 <a href="#">SEE ALL <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="items-card-container">
-            {% for product in products %}
+            {% for product in top_deals %}
                 <a href="{{ product.get_absolute_url }}" class="item-card discounted">
-                    <p class="dicount-percentage">-20%</p>
+                    <p class="dicount-percentage">-{{ product.percentage }}%</p>
                     <div class="image" style="height: 200px; background-color: grey;">
                         <img src={{ product.image_set.first.image.url }} alt="">
                     </div>
@@ -79,7 +85,7 @@
                                 </span>
                             </div>
                             <p class="price original-price">&#8358;<span>{{ product.price|intcomma }}</span></p>
-                            <p class="price discounted-price">&#8358;{{ product.price|intcomma }}</p>
+                            <p class="price discounted-price">&#8358;{{ product.discount|intcomma }}</p>
                         </div>
                     </div>
                 </a>
