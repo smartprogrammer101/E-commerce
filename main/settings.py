@@ -150,4 +150,16 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/account/email'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+DEFAULT_FROM_EMAIL = EMAIL_HOST
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 # AUTHENTICATION_BACKENDS = ['users.backend.EmailBackend']
+
+# user = User.objects.filter(pk__gt=3)
+# user.delete()

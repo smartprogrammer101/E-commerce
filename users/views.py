@@ -1,8 +1,14 @@
-import email
+from smtplib import SMTPConnectError
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from .forms import SignInEmailForm, SignInPasswordForm, RegistrationForm
 from django.contrib.auth import get_user_model, login, logout, authenticate
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.sites.shortcuts import get_current_site
+from .utils import token_generator
 
 # Create your views here.
 
@@ -22,6 +28,28 @@ def signup(request):
             user.set_password(password)
             user.is_active = False
             user.save()
+
+            #Sending email confirmation message
+            uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+            domain = get_current_site(request).domain
+            link = reverse('activate', kwargs={
+                'uidb64':uidb64, 'token': token_generator.make_token(user)})
+            activate_url = 'http://'+domain+link
+            email_body = 'Hi! you can use this link to activate your ezone account'
+            email_subject = 'Activate your Ezone account\n' + activate_url
+
+            message = EmailMessage(
+                email_subject,
+                email_body,
+                'user@email.com',
+                [user.email]
+            )
+            try:
+                message.send(fail_silently=False)
+            except SMTPConnectError:
+                messages.error(request, 'something went wrong!')
+                return render(request, 'users/signup.html', {'form': form})
+
             return redirect('login-email')
         else:
             return render(request, 'users/signup.html', {'form': form})
@@ -31,7 +59,8 @@ def signup(request):
     return render(request, 'users/signup.html', {'form': form})
 
 
-
+def activate(request, uidb64, token):
+    return redirect('login')
 
 
 

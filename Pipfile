@@ -10,6 +10,7 @@ pillow = "*"
 coverage = "*"
 isort = "*"
 flake8 = "*"
+six = "*"
 
 [dev-packages]
 
