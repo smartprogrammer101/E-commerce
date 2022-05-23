@@ -14,6 +14,15 @@ class SearchedProductListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        if self.request.GET.get('top_deal'):
+            text = 'top deals'
+            products = Product.objects.filter(discount__gt=0)
+            context['searched_products_result'] = products
+            context['searched_text'] = text
+            context['searched_category'] = 'top deals'
+            return context
+
+
         # If category is chosen during search
         if self.request.GET.get('category'):
             category = self.request.GET.get('category')

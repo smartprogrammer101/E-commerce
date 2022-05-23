@@ -55,7 +55,7 @@
         <div class="items-wrapper">
             <div class="group group-header flex space-between align-center">
                 <h3>Top Deals</h3>
-                <a href="#">SEE ALL <i class="fa fa-angle-right"></i></a>
+                <a href="{% url 'search' %}?top_deal=true">SEE ALL <i class="fa fa-angle-right"></i></a>
             </div>
             <div class="items-card-container">
             {% for product in top_deals %}
@@ -78,7 +78,7 @@
                                 <span class="average-rating">{{ product.rating }}</span>
                                 <span class="num-reviews">
                                 {% if product.num_reviews == 0 %}
-                                no reviews yet
+                                <span class="new">new*</span>
                                 {% else %}
                                     {{ product.num_reviews }}
                                 {% endif %}
@@ -92,7 +92,7 @@
             {% endfor %}
             </div>
             <div class="group group-footer flex justify-end">
-                <a href="#" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
+                <a href="{% url 'search' %}?top_deal=true" class="see-all-link-bottom flex">SEE ALL <i class="fa fa-angle-right"></i></a>
             </div>
         </div>
 
@@ -123,13 +123,17 @@
                                 <span class="average-rating">{{ product.rating }}</span>
                                 <span class="num-reviews">
                                 {% if product.num_reviews == 0 %}
-                                no reviews yet
+                                <span class="new">new*</span>
                                 {% else %}
                                     {{ product.num_reviews }}
                                 {% endif %}
                                 </span>
                             </div>
+                            {% if product.discount %}
+                            <p class="price">&#8358;<span>{{ product.discount|intcomma }}</span></p>
+                            {% else %}
                             <p class="price">&#8358;<span>{{ product.price|intcomma }}</span></p>
+                            {% endif %}
                         {% comment %} </div> {% endcomment %}
                     </div>
                 </a>

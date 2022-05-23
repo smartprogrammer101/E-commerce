@@ -16,8 +16,8 @@ class ProductInline(admin.StackedInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [
-        ReviewInline,
         ImageInline,
+        ReviewInline,
     ]
 
 # class ManufacturerAdmin(admin.ModelAdmin):

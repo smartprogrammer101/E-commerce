@@ -13,7 +13,7 @@ class HomePageView(ListView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.all()[:4]
         context["featured_products"] = FeaturedProduct.objects.all()[:4]
-        context['top_deals'] = Product.objects.filter(discount__gt=0)
+        context['top_deals'] = Product.objects.filter(discount__gt=0)[:4]
         print(context['top_deals'])
         return context
 

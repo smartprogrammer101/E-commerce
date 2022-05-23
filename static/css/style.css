@@ -509,3 +509,6 @@ main {
 .item-card .num-reviews {
     font-size: .75em;
 }
+.item-card .new {
+    color: green;
+}
